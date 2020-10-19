@@ -19,8 +19,7 @@ public class Meeting
   {
     numberOfPeople = n;
 
-    meetingNumber = meetingNumber + 1;
-    System.out.println("This is meeting number "+meetingNumber+", and there are "+numberOfPeople+" in this meeting.");
+    System.out.println("There are "+numberOfPeople+" people in this meeting.");
     System.out.println();
   }
 }

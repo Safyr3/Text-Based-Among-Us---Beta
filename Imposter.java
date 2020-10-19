@@ -87,24 +87,36 @@ public class Imposter
 
     public String oxygen()
     {
-        int countdownOxygen = 30;
+        int countdownOxygen = 20;
 
         System.out.println();
         System.out.println("Oxygen depleting…");
         System.out.println();
-        System.out.println("30");
+        System.out.println("20");
         pause(1000);
 
         while(countdownOxygen > 0)
         {
           countdownOxygen = countdownOxygen - 1;
           System.out.println(countdownOxygen);
+          int oxygenRestored = (int)(Math.random() * 10) + 0;
+          if(oxygenRestored < 6)
+          {
+            System.out.println();
+            System.out.println("Oxygen restored.");
+            System.out.println();
+            break; 
+          }
+          else if (oxygenRestored > 5)
+          {
+            System.out.println();
+            System.out.println("Oxygen depleted.");
+            System.out.println();
+            System.out.println("You won the game!");
+            break;
+          }
           pause(1000);
         }
-        System.out.println();
-        System.out.println("Oxygen depleted.");
-        System.out.println();
-        System.out.println("You won the game!");
         return "Oxygen depleting…";
     }
     
@@ -128,8 +140,9 @@ public class Imposter
         {
           System.out.println();
           System.out.println("No one saw you kill.");
+          System.out.println();
         }
-        else if (killWitness < 5)
+        else if (killWitness < 6)
         {
           System.out.println();
           System.out.println("Someone saw you kill.");
