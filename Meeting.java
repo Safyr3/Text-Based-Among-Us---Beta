@@ -15,11 +15,12 @@ public class Meeting
     }
   }
 
-  public Meeting(int numberOfPeople)
+  public Meeting(int n)
   {
-    meetingNumber = meetingNumber + 1;
-    System.out.println("This is meeting number "+meetingNumber+".");
-    System.out.println("There are "+numberOfPeople+"in this meeting.");
+    numberOfPeople = n;
 
+    meetingNumber = meetingNumber + 1;
+    System.out.println("This is meeting number "+meetingNumber+", and there are "+numberOfPeople+" in this meeting.");
+    System.out.println();
   }
 }

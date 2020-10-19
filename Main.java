@@ -11,6 +11,7 @@ public class Main
         int max = 10;
         int min = 4;
         int range = max - min + 1;
+        boolean killHappened;
         
         System.out.println();
         System.out.println("This is a modified version of Among Us.");
@@ -73,17 +74,11 @@ public class Main
               {
                 imposter.kill();
                 numberOfPeople = numberOfPeople - 1;
-                boolean killHappened = true;
               }
               else
               {
                 System.out.println();
                 System.out.println("AN ERROR HAS OCCURRED");
-              }
-
-              if(killHappend = true)
-              {
-                Meeting meeting = new Meeting(numberOfPeople);
               }
             }
             System.out.println("You won the game!");
