@@ -1,6 +1,7 @@
 public class Meeting
 {
   private int numberOfPeople;
+  private int meetingNumber = 0;
 
   public static void pause(int ms) 
   {
@@ -16,6 +17,9 @@ public class Meeting
 
   public Meeting(int numberOfPeople)
   {
-    
+    meetingNumber = meetingNumber + 1;
+    System.out.println("This is meeting number "+meetingNumber+".");
+    System.out.println("There are "+numberOfPeople+"in this meeting.");
+
   }
 }
