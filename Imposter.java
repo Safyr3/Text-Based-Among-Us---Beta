@@ -6,6 +6,7 @@ public class Imposter
     private boolean canKill;
     private boolean canSabotage;
     private int numberOfPeople;
+    private boolean killWitnessed = false;
 
     public static void pause(int ms) 
     {
@@ -131,10 +132,18 @@ public class Imposter
         }
         else if (killWitness < 5)
         {
+          killWitnessed = true;
           System.out.println();
           System.out.println("Someone saw you kill.");
           System.out.println();
+          
         }
+
+        if(killWitnessed = true)
+        {
+          Meeting meeting = new Meeting(numberOfPeople);
+        }
+
         return "You killed someone.";
     }
 }
