@@ -1,6 +1,7 @@
 public class Meeting
 {
   private int numberOfPeople;
+  private int numberOfPeopleDead;
 
   public static void pause(int ms) 
   {
@@ -14,11 +15,14 @@ public class Meeting
     }
   }
 
-  public Meeting(int n)
+  public Meeting(int p, int d)
   {
-    numberOfPeople = n;
+    numberOfPeople = p;
+    numberOfPeopleDead = d;
 
     System.out.println("There are "+numberOfPeople+" people in this meeting.");
+    System.out.println();
+    System.out.println(d + " people died last round.");
     System.out.println();
   }
 }

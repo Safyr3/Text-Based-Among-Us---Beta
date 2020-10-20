@@ -8,6 +8,7 @@ public class Imposter
     private int numberOfPeople;
     private boolean reactorDown;
     private boolean oxygenDepleted;
+    private int peopleKilled;
 
     public static void pause(int ms) 
     {
@@ -155,6 +156,7 @@ public class Imposter
         System.out.println("You killed someone.");
         System.out.println();
         numberOfPeople = numberOfPeople - 1;
+        peopleKilled = peopleKilled + 1;
         System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
         int killWitness = (int)(Math.random() * 11) + 0;
 
@@ -169,7 +171,7 @@ public class Imposter
           System.out.println();
           System.out.println("Someone saw you kill.");
           System.out.println();
-          Meeting meeting = new Meeting(numberOfPeople);
+          Meeting meeting = new Meeting(numberOfPeople, peopleKilled);
         }
         return "You killed someone.";
     }

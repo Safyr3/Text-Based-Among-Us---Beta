@@ -142,7 +142,7 @@ public class Main
                   System.out.println();
                   System.out.println("Please wait for the round to end.");
                   pause(5000);
-                  Meeting meeting = new Meeting(numberOfPeople);
+                  Meeting meeting = new Meeting(numberOfPeople, 0);
               }
               else
               {
