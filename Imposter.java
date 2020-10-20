@@ -6,6 +6,8 @@ public class Imposter
     private boolean canKill;
     private boolean canSabotage;
     private int numberOfPeople;
+    private boolean crewmate = false;
+    private boolean imposter = true;
     private boolean reactorDown;
     private boolean oxygenDepleted;
     private int peopleKilled;
@@ -22,12 +24,14 @@ public class Imposter
       }
     }
     
-    public Imposter(String n, boolean k, boolean s, int p)
+    public Imposter(String n, boolean k, boolean s, int p, boolean c, boolean i)
     {
         playerName = n;
         canKill = k;
         canSabotage = s;
         numberOfPeople = p;
+        crewmate = c;
+        imposter = i;
         
         System.out.println("Role: Imposter");
         System.out.println();
@@ -171,7 +175,7 @@ public class Imposter
           System.out.println();
           System.out.println("Someone saw you kill.");
           System.out.println();
-          Meeting meeting = new Meeting(numberOfPeople, peopleKilled);
+          Meeting meeting = new Meeting(numberOfPeople, peopleKilled, crewmate, imposter);
         }
         return "You killed someone.";
     }

@@ -47,6 +47,9 @@ public class Main
         if(role % 2 != 0 || name.equals("luci"))
         {
             Imposter imposter = new Imposter(name, true, true, numberOfPeople);
+            boolean imposter = true;
+            boolean crewmate = false;
+
             while(numberOfPeople > 1)
             {
               System.out.println("What do you want to do?");
@@ -98,6 +101,9 @@ public class Main
         else if (role % 2 == 0)
         {
             Crewmate crewmate = new Crewmate(name, true, numberOfPeople);
+            boolean imposter = false;
+            boolean crewmate = true;
+
             while(numberOfPeople >= 1)
             {
               System.out.println("Do you want to complete a task?");
@@ -142,7 +148,7 @@ public class Main
                   System.out.println();
                   System.out.println("Please wait for the round to end.");
                   pause(5000);
-                  Meeting meeting = new Meeting(numberOfPeople, 0);
+                  Meeting meeting = new Meeting(numberOfPeople, 0, crewmate, imposter);
               }
               else
               {
