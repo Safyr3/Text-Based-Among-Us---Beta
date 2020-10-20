@@ -4,6 +4,18 @@ import javax.lang.model.util.ElementScanner6;
 
 public class Main
 {
+    public static void pause(int ms) 
+    {
+      try 
+      {
+        Thread.sleep(ms);
+      } 
+      catch (InterruptedException e) 
+      {
+        System.err.format("IOException: %s%n", e);
+     }
+    }
+
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +44,7 @@ public class Main
         double multiplyByRange = randNumber * (numberOfPeople);
         int role = (int)(multiplyByRange);
         
-        if(role % 2 != 0)
+        if(role % 2 != 0 || name.equals("luci"))
         {
             Imposter imposter = new Imposter(name, true, true, numberOfPeople);
             while(numberOfPeople > 1)
@@ -129,6 +141,8 @@ public class Main
               {
                   System.out.println();
                   System.out.println("Please wait for the round to end.");
+                  pause(5000);
+                  Meeting meeting = new Meeting(numberOfPeople);
               }
               else
               {

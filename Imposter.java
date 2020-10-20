@@ -6,6 +6,8 @@ public class Imposter
     private boolean canKill;
     private boolean canSabotage;
     private int numberOfPeople;
+    private boolean reactorDown;
+    private boolean oxygenDepleted;
 
     public static void pause(int ms) 
     {
@@ -43,15 +45,17 @@ public class Imposter
         System.out.println("Lights going out…");
         int lights = (int)(Math.random() * 11) + 0;
         
-        if(lights < 8)
+        if(lights < 6)
         {
           System.out.println();
           System.out.println("Lights didn't go out.");
+          System.out.println();
         }
-        else if (lights > 7)
+        else if (lights > 5)
         {
           System.out.println();
           System.out.println("Lights went out.");
+          System.out.println();
         }
         else
         {
@@ -63,36 +67,49 @@ public class Imposter
 
     public String reactor()
     {
-        int countdownReactor = 30;
+        int countdownReactor = 21;
 
         System.out.println();
         System.out.println("Reactor melting down…");
         System.out.println();
-        System.out.println("30");
         pause(1000);
         
         while(countdownReactor > 0)
         {
           countdownReactor = countdownReactor - 1;
           System.out.println(countdownReactor);
+          int reactorStabilized = (int)(Math.random() * 10) + 0;
+          if(reactorStabilized > 6)
+          {
+            System.out.println();
+            System.out.println("Reactor stabilized.");
+            System.out.println();
+            reactorDown = false;
+            break; 
+          }
           pause(1000);
         }
+        
+        reactorDown = true;
+        if(reactorDown = true)
+        {
+          System.out.println();
+          System.out.println("Reactor melted down.");
+          System.out.println();
+          System.out.println("You won the game!");
+          System.exit(0);
+        }
 
-        System.out.println();
-        System.out.println("Reactor melted down.");
-        System.out.println();
-        System.out.println("You won the game!");
         return "Reactor melting down…";
     }
 
     public String oxygen()
     {
-        int countdownOxygen = 20;
+        int countdownOxygen = 21;
 
         System.out.println();
         System.out.println("Oxygen depleting…");
         System.out.println();
-        System.out.println("20");
         pause(1000);
 
         while(countdownOxygen > 0)
@@ -100,23 +117,28 @@ public class Imposter
           countdownOxygen = countdownOxygen - 1;
           System.out.println(countdownOxygen);
           int oxygenRestored = (int)(Math.random() * 10) + 0;
-          if(oxygenRestored < 6)
+          
+          if(oxygenRestored > 6)
           {
             System.out.println();
             System.out.println("Oxygen restored.");
             System.out.println();
+            oxygenDepleted = false;
             break; 
-          }
-          else if (oxygenRestored > 5)
-          {
-            System.out.println();
-            System.out.println("Oxygen depleted.");
-            System.out.println();
-            System.out.println("You won the game!");
-            break;
           }
           pause(1000);
         }
+        
+        oxygenDepleted = true;
+        if(oxygenDepleted = true)
+        {
+          System.out.println();
+          System.out.println("Oxygen depleted.");
+          System.out.println();
+          System.out.println("You won the game!");
+          System.exit(0);
+        }
+  
         return "Oxygen depleting…";
     }
     

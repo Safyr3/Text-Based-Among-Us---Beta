@@ -1,7 +1,6 @@
 public class Meeting
 {
   private int numberOfPeople;
-  private int meetingNumber = 0;
 
   public static void pause(int ms) 
   {
