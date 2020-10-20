@@ -32,7 +32,7 @@ public class Main
         double multiplyByRange = randNumber * (numberOfPeople);
         int role = (int)(multiplyByRange);
         
-        if(role % 2 != 0 || name.equals("luci"))
+        if(role % 2 != 0)
         {
             Imposter imposter = new Imposter(name, true, true, numberOfPeople);
             while(numberOfPeople > 1)
@@ -86,13 +86,14 @@ public class Main
         else if (role % 2 == 0)
         {
             Crewmate crewmate = new Crewmate(name, true, numberOfPeople);
-            while(numberOfPeople >=1)
-            System.out.println("Do you want to complete a task?");
-            System.out.println("yes or no:");
-            String task = scanner.nextLine().toLowerCase();
-            
-            if(task.equals("yes"))
+            while(numberOfPeople >= 1)
             {
+              System.out.println("Do you want to complete a task?");
+              System.out.println("yes or no:");
+              String task = scanner.nextLine().toLowerCase();
+            
+              if(task.equals("yes"))
+              {
                 System.out.println();
                 System.out.println("What task would you like to complete?");
                 System.out.println("electrical,: medbay, admin, cafeteria, or weapons:");
@@ -123,18 +124,19 @@ public class Main
                   System.out.println();
                   System.out.println("AN ERROR HAS OCCURRED");
                 }
+              }
+              else if(task.equals("no"))
+              {
+                  System.out.println();
+                  System.out.println("Please wait for the round to end.");
+              }
+              else
+              {
+                  System.out.println();
+                  System.out.println("AN ERROR HAS OCCURRED");
+              }
             }
-            else if(task.equals("no"))
-            {
-                System.out.println();
-                System.out.println("Please wait for the round to end.");
-            }
-            else
-            {
-                System.out.println();
-                System.out.println("AN ERROR HAS OCCURRED");
-            }
-        }
+          }
         else
         {
             System.out.println();
