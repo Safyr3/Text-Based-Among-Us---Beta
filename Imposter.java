@@ -2,12 +2,10 @@ import javax.lang.model.util.ElementScanner6;
 
 public class Imposter 
 {
-    private String playerName;
-    private boolean canKill;
-    private boolean canSabotage;
     private int numberOfPeople;
-    private boolean crewmate = false;
-    private boolean imposter = true;
+    private boolean imposter;
+    private boolean crewmate;
+    private boolean lightsOut = false;
     private boolean reactorDown;
     private boolean oxygenDepleted;
     private int peopleKilled;
@@ -24,14 +22,11 @@ public class Imposter
       }
     }
     
-    public Imposter(String n, boolean k, boolean s, int p, boolean c, boolean i)
+    public Imposter(int p, boolean i, boolean c)
     {
-        playerName = n;
-        canKill = k;
-        canSabotage = s;
         numberOfPeople = p;
-        crewmate = c;
         imposter = i;
+        crewmate = c;
         
         System.out.println("Role: Imposter");
         System.out.println();
@@ -53,18 +48,22 @@ public class Imposter
         if(lights < 6)
         {
           System.out.println();
-          System.out.println("Lights didn't go out.");
+          System.out.println("Lights were fixed.");
           System.out.println();
         }
         else if (lights > 5)
         {
+          lightsOut = true;
           System.out.println();
           System.out.println("Lights went out.");
+          System.out.println();
+          System.out.println("You can now kill once and no one will see you.");
           System.out.println();
         }
         else
         {
           System.out.println("AN ERROR OCCURRED");
+          System.out.println();
         }
 
         return "Lights going out…";
@@ -84,7 +83,8 @@ public class Imposter
           countdownReactor = countdownReactor - 1;
           System.out.println(countdownReactor);
           int reactorStabilized = (int)(Math.random() * 10) + 0;
-          if(reactorStabilized > 6)
+          
+          if(reactorStabilized > 7)
           {
             System.out.println();
             System.out.println("Reactor stabilized.");
@@ -92,17 +92,22 @@ public class Imposter
             reactorDown = false;
             break; 
           }
+          
           pause(1000);
         }
         
-        reactorDown = true;
-        if(reactorDown = true)
+        if(countdownReactor == 0)
         {
-          System.out.println();
-          System.out.println("Reactor melted down.");
-          System.out.println();
-          System.out.println("You won the game!");
-          System.exit(0);
+          reactorDown = true;
+          
+          if(reactorDown = true)
+          {
+            System.out.println();
+            System.out.println("Reactor melted down.");
+            System.out.println();
+            System.out.println("You won the game!");
+            System.exit(0);
+          }
         }
 
         return "Reactor melting down…";
@@ -123,7 +128,7 @@ public class Imposter
           System.out.println(countdownOxygen);
           int oxygenRestored = (int)(Math.random() * 10) + 0;
           
-          if(oxygenRestored > 6)
+          if(oxygenRestored > 7)
           {
             System.out.println();
             System.out.println("Oxygen restored.");
@@ -134,14 +139,18 @@ public class Imposter
           pause(1000);
         }
         
-        oxygenDepleted = true;
-        if(oxygenDepleted = true)
+        if(countdownOxygen == 0)
         {
-          System.out.println();
-          System.out.println("Oxygen depleted.");
-          System.out.println();
-          System.out.println("You won the game!");
-          System.exit(0);
+          oxygenDepleted = true;
+        
+          if(oxygenDepleted = true)
+          {
+            System.out.println();
+            System.out.println("Oxygen depleted.");
+            System.out.println();
+            System.out.println("You won the game!");
+            System.exit(0);
+          }
         }
   
         return "Oxygen depleting…";
@@ -151,6 +160,7 @@ public class Imposter
     {
         System.out.println();
         System.out.println("Alibi created.");
+        System.out.println();
         return "Alibi created.";
     }
     
@@ -164,7 +174,14 @@ public class Imposter
         System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
         int killWitness = (int)(Math.random() * 11) + 0;
 
-        if(killWitness > 5)
+        if(lightsOut = true)
+        {
+          System.out.println();
+          System.out.println("No one saw you kill.");
+          System.out.println();
+          lightsOut = false;
+        }
+        else if(killWitness > 5)
         {
           System.out.println();
           System.out.println("No one saw you kill.");
@@ -175,7 +192,7 @@ public class Imposter
           System.out.println();
           System.out.println("Someone saw you kill.");
           System.out.println();
-          Meeting meeting = new Meeting(numberOfPeople, peopleKilled, crewmate, imposter);
+          Meeting meeting = new Meeting(numberOfPeople, peopleKilled, imposter, crewmate);
         }
         return "You killed someone.";
     }

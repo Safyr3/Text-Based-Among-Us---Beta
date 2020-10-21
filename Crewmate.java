@@ -1,8 +1,8 @@
 public class Crewmate 
 {
-    private String playerName;
-    private boolean canDoTasks;
     private int numberOfPeople;
+    private boolean imposter;
+    private boolean crewmate;
     
     public static void pause(int ms) 
     {
@@ -16,11 +16,11 @@ public class Crewmate
       }
     }
 
-    public Crewmate(String n, boolean t, int p)
+    public Crewmate(int p, boolean i, boolean c)
     {
-        playerName = n;
-        canDoTasks = t;
         numberOfPeople = p;
+        imposter = i;
+        crewmate = c;
         
         System.out.println("Role: Crewmate");
         System.out.println();
