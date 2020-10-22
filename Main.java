@@ -23,6 +23,7 @@ public class Main
         int max = 10;
         int min = 4;
         int range = max - min + 1;
+        int peopleKilled = 0;
         boolean killHappened;
         
         System.out.println();
@@ -80,6 +81,7 @@ public class Main
                 {
                   System.out.println();
                   System.out.println("AN ERROR HAS OCCURRED");
+                  System.out.println();
                 }
               }
               else if (action.equals("alibi"))
@@ -95,6 +97,7 @@ public class Main
               {
                 System.out.println();
                 System.out.println("AN ERROR HAS OCCURRED");
+                System.out.println();
               }
             }
             System.out.println("You won the game!");
@@ -116,7 +119,7 @@ public class Main
               {
                 System.out.println();
                 System.out.println("What task would you like to complete?");
-                System.out.println("electrical,: medbay, admin, cafeteria, or weapons:");
+                System.out.println("electrical, medbay, admin, cafeteria, or weapons:");
                 String taskToDo = scanner.nextLine().toLowerCase();
 
                 if(taskToDo.equals("electrical"))
@@ -143,26 +146,32 @@ public class Main
                 {
                   System.out.println();
                   System.out.println("AN ERROR HAS OCCURRED");
+                  System.out.println();
                 }
               }
               else if(task.equals("no"))
               {
                   System.out.println();
                   System.out.println("Please wait for the round to end.");
+                  System.out.println();
+                  
                   pause(5000);
+                  
                   Meeting meeting = new Meeting(numberOfPeople, 0, isImposter, isCrewmate);
               }
               else
               {
-                  System.out.println();
-                  System.out.println("AN ERROR HAS OCCURRED");
+                System.out.println();
+                System.out.println("AN ERROR HAS OCCURRED");
+                System.out.println();
               }
             }
           }
         else
         {
-            System.out.println();
-            System.out.println("AN ERROR HAS OCCURED");
+          System.out.println();
+          System.out.println("AN ERROR HAS OCCURED");
+          System.out.println();
         }
     }
 }

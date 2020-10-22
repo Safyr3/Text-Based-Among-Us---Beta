@@ -40,6 +40,7 @@ public class Crewmate
         pause(5000);
         System.out.println();
         System.out.println("Wires are fixed!");
+        System.out.println();
         return "Fixing wires…";
     }
 
@@ -50,6 +51,7 @@ public class Crewmate
         pause(10000);
         System.out.println();
         System.out.println("Scan complete!");
+        System.out.println();
         return "Scanning…";
     }
 
@@ -60,6 +62,7 @@ public class Crewmate
         pause(7500);
         System.out.println();
         System.out.println("Task complete!");
+        System.out.println();
         return "Swiping card…";
     }
 
@@ -70,6 +73,7 @@ public class Crewmate
         pause(5000);
         System.out.println();
         System.out.println("Garbage emptied!");
+        System.out.println();
         return "Emptying garbage…";
     }
 
@@ -80,6 +84,7 @@ public class Crewmate
         pause(7500);
         System.out.println();
         System.out.println("Asteroids cleared!");
+        System.out.println();
         return "Clearing asteroids…";
     }
 }

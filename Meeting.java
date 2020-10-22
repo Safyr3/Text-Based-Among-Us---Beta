@@ -32,10 +32,12 @@ public class Meeting
     if(crewmate = true)
     {
       System.out.println("Crewmate!");
+      System.out.println();
     }
     else if (imposter = true)
     {
       System.out.println("Imposter!");
+      System.out.println();
     }
     else
     {
