@@ -54,50 +54,48 @@ public class Main
 
             while(numberOfPeople > 1)
             {
-              System.out.println("What do you want to do?");
-              System.out.println("sabotage, alibi, or kill:");
-              String action = scanner.nextLine().toLowerCase();
+                System.out.println("What do you want to do?");
+                System.out.println("sabotage, alibi, or kill:");
+                String action = scanner.nextLine().toLowerCase();
             
               if(action.equals("sabotage"))
               {
-                System.out.println();
-                System.out.println("What would you like to sabotage?");
-                System.out.println("lights, reactor, or oxygen:");
-                String sabotage = scanner.nextLine().toLowerCase();
+                  System.out.println();
+                  System.out.println("What would you like to sabotage?");
+                  System.out.println("lights, reactor, or oxygen:");
+                  String sabotage = scanner.nextLine().toLowerCase();
 
                 if(sabotage.equals("lights"))
                 {
-                  imposter.lights();
+                    imposter.lights();
                 }
                 else if (sabotage.equals("reactor"))
                 {
-                  imposter.reactor();
+                    imposter.reactor();
                 }
                 else if (sabotage.equals("oxygen"))
                 {
-                  imposter.oxygen();
+                    imposter.oxygen();
                 }
                 else
                 {
-                  System.out.println();
-                  System.out.println("AN ERROR HAS OCCURRED");
-                  System.out.println();
+                    System.out.println("AN ERROR HAS OCCURRED");
+                    System.out.println();
                 }
               }
               else if (action.equals("alibi"))
               {
-                imposter.alibi();
+                  imposter.alibi();
               }
               else if (action.equals("kill"))
               {
-                imposter.kill();
-                numberOfPeople = numberOfPeople - 1;
+                  imposter.kill();
+                  numberOfPeople = numberOfPeople - 1;
               }
               else
               {
-                System.out.println();
-                System.out.println("AN ERROR HAS OCCURRED");
-                System.out.println();
+                  System.out.println("AN ERROR HAS OCCURRED");
+                  System.out.println();
               }
             }
             System.out.println("You won the game!");
@@ -111,67 +109,66 @@ public class Main
 
             while(numberOfPeople >= 1)
             {
-              System.out.println("Do you want to complete a task?");
-              System.out.println("yes or no:");
-              String task = scanner.nextLine().toLowerCase();
+                System.out.println("Do you want to complete a task?");
+                System.out.println("yes or no:");
+                String task = scanner.nextLine().toLowerCase();
             
-              if(task.equals("yes"))
-              {
-                System.out.println();
-                System.out.println("What task would you like to complete?");
-                System.out.println("electrical, medbay, admin, cafeteria, or weapons:");
-                String taskToDo = scanner.nextLine().toLowerCase();
+                if(task.equals("yes"))
+                {
+                  System.out.println();
+                  System.out.println("What task would you like to complete?");
+                  System.out.println("electrical, medbay, admin, cafeteria, or weapons:");
+                  String taskToDo = scanner.nextLine().toLowerCase();
 
-                if(taskToDo.equals("electrical"))
-                {
-                  crewmate.electrical();
+                  if(taskToDo.equals("electrical"))
+                  {
+                    crewmate.electrical();
+                  } 
+                  else if (taskToDo.equals("medbay"))
+                  {
+                    crewmate.medbay();
+                  }
+                  else if (taskToDo.equals("admin"))
+                  {
+                    crewmate.admin();
+                  }
+                  else if (taskToDo.equals("cafeteria"))
+                  {
+                    crewmate.cafeteria();
+                  }
+                  else if (taskToDo.equals("weapons"))
+                  {
+                    crewmate.weapons();
+                  }
+                  else
+                  {
+                    System.out.println("AN ERROR HAS OCCURRED");
+                    System.out.println();
+                  }
                 }
-                else if (taskToDo.equals("medbay"))
+                else if(task.equals("no"))
                 {
-                  crewmate.medbay();
-                }
-                else if (taskToDo.equals("admin"))
-                {
-                  crewmate.admin();
-                }
-                else if (taskToDo.equals("cafeteria"))
-                {
-                  crewmate.cafeteria();
-                }
-                else if (taskToDo.equals("weapons"))
-                {
-                  crewmate.weapons();
+                    System.out.println();
+                    System.out.println("Please wait for the round to end.");
+                    System.out.println();
+                  
+                    pause(5000);
+                  
+                    Meeting meeting = new Meeting(numberOfPeople, 0, isImposter, isCrewmate);
                 }
                 else
                 {
-                  System.out.println();
-                  System.out.println("AN ERROR HAS OCCURRED");
-                  System.out.println();
+                    System.out.println();
+                    System.out.println("AN ERROR HAS OCCURRED");
+                    System.out.println();
                 }
-              }
-              else if(task.equals("no"))
-              {
-                  System.out.println();
-                  System.out.println("Please wait for the round to end.");
-                  System.out.println();
-                  
-                  pause(5000);
-                  
-                  Meeting meeting = new Meeting(numberOfPeople, 0, isImposter, isCrewmate);
-              }
-              else
-              {
-                System.out.println();
-                System.out.println("AN ERROR HAS OCCURRED");
-                System.out.println();
-              }
             }
-          }
+        }
         else
         {
-          System.out.println();
-          System.out.println("AN ERROR HAS OCCURED");
-          System.out.println();
+            System.out.println();
+            System.out.println("AN ERROR HAS OCCURED");
+            System.out.println();
         }
     }
 }
