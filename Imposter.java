@@ -1,234 +1,238 @@
 import java.util.Scanner;
-
 import javax.lang.model.util.ElementScanner6;
 
 public class Imposter 
 {
-    Scanner scanner = new Scanner(System.in);
-    
-    private int numberOfPeople;
-    private boolean imposter;
-    private boolean crewmate;
-    private boolean lightsOut = false;
-    private boolean reactorDown;
-    private boolean oxygenDepleted;
-    private boolean alibi = false;
-    private int peopleKilled;
-    private boolean killedSomeone = false;
+  Scanner scanner = new Scanner(System.in);
 
-    public static void pause(int ms) 
+  private String name;  
+  private int numberOfPeople;
+  private boolean imposter;
+  private boolean crewmate;
+  private boolean lightsOut = false;
+  private boolean reactorDown;
+  private boolean oxygenDepleted;
+  private boolean alibi = false;
+  private int peopleKilled;
+  private boolean killSeen;
+
+  public static void pause(int ms) 
+  {
+    try 
     {
-      try 
-      {
-          Thread.sleep(ms);
-      } 
-      catch (InterruptedException e) 
-      {
-          System.err.format("IOException: %s%n", e);
+      Thread.sleep(ms);
+    } 
+    catch (InterruptedException e) 
+    {
+      System.err.format("IOException: %s%n", e);
+    }
+  }
+    
+  public Imposter(String n, int p, boolean i, boolean c)
+  {
+    name = n;
+    numberOfPeople = p;
+    imposter = i;
+    crewmate = c;
+        
+    System.out.println("Role: Imposter");
+    System.out.println();
+    System.out.println("Fake tasks: ");
+    System.out.println("1. Electrical: Fix Wiring 0/3");
+    System.out.println("2. O2: Clean O2 Filter 0/1");
+    System.out.println("3. MedBay: Inspect Sample 0/1");
+    System.out.println("4. Reactor: Start Reactor 0/1");
+    System.out.println("5. Weapons: Download Data 0/2");
+    System.out.println();
+  }
+    
+  public String lights()
+  {
+    System.out.println();
+    System.out.println("Lights going out…");
+    int lights = (int)(Math.random() * 11) + 0;
+        
+    if(lights < 6)
+    {
+      lightsOut = false;
+
+      pause(2500);
+
+      System.out.println();
+      System.out.println("Lights were fixed.");
+      System.out.println();
       }
-    }
-    
-    public Imposter(int p, boolean i, boolean c)
-    {
-        numberOfPeople = p;
-        imposter = i;
-        crewmate = c;
-        
-        System.out.println("Role: Imposter");
-        System.out.println();
-        System.out.println("Fake tasks: ");
-        System.out.println("1. Electrical: Fix Wiring 0/3");
-        System.out.println("2. O2: Clean O2 Filter 0/1");
-        System.out.println("3. MedBay: Inspect Sample 0/1");
-        System.out.println("4. Reactor: Start Reactor 0/1");
-        System.out.println("5. Weapons: Download Data 0/2");
-        System.out.println();
-    }
-    
-    public String lights()
-    {
-        System.out.println();
-        System.out.println("Lights going out…");
-        int lights = (int)(Math.random() * 11) + 0;
-        
-        if(lights < 6)
-        {
-            lightsOut = false;
+      else if (lights > 5)
+      {
+        lightsOut = true;
 
-            pause(2500);
-
-            System.out.println();
-            System.out.println("Lights were fixed.");
-            System.out.println();
-        }
-        else if (lights > 5)
-        {
-            lightsOut = true;
-
-            pause(5000);
+        pause(5000);
           
-            System.out.println();
-            System.out.println("Lights went out.");
-            System.out.println();
-            System.out.println("You can now kill once and no one will see you.");
-            System.out.println();
-            System.out.println("Do you want to kill?");
-            System.out.println("yes or no:");
-            String killLights = scanner.nextLine();
+        System.out.println();
+        System.out.println("Lights went out.");
+        System.out.println();
+        System.out.println("You can now kill once and no one will see you.");
+        System.out.println();
+        System.out.println("Do you want to kill?");
+        System.out.println("yes or no:");
+        String killLights = scanner.nextLine();
 
-            if(killLights.equals("yes"))
-            {
-                System.out.println();
-                System.out.println("You killed someone.");
-                System.out.println();
-                System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
-                System.out.println();
-            }
-            else if (killLights.equals("no"))
-            {
-                pause(1);
-            }
-            else
-            {
-                System.out.println("AN ERROR OCCURRED");
-                System.out.println();            
-            }
+        if(killLights.equals("yes"))
+        {
+          System.out.println();
+          System.out.println("You killed someone.");
+          System.out.println();
+          System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
+          System.out.println();
+        }
+        else if (killLights.equals("no"))
+        {
+          pause(1);
         }
         else
         {
-            System.out.println("AN ERROR OCCURRED");
-            System.out.println();
+          System.out.println("AN ERROR OCCURRED");
+          System.out.println();            
         }
+      }
+      else
+      {
+        System.out.println("AN ERROR OCCURRED");
+        System.out.println();
+      }
 
-        return "Lights going out…";
+    return "Lights going out…";
+  }
+
+  public String reactor()
+  {
+    int countdownReactor = 21;
+
+    System.out.println();
+    System.out.println("Reactor melting down…");
+    System.out.println();
+    pause(1000);
+        
+    while(countdownReactor > 0)
+    {
+      countdownReactor = countdownReactor - 1;
+      System.out.println(countdownReactor);
+      int reactorStabilized = (int)(Math.random() * 10) + 0;
+          
+      if(reactorStabilized > 7)
+      { 
+        System.out.println();
+        System.out.println("Reactor stabilized.");
+        System.out.println();
+        reactorDown = false;
+        break; 
+      }      
+      
+      pause(1000);
+    }
+        
+    if(countdownReactor == 0)
+    {
+      reactorDown = true;
+          
+      if(reactorDown = true)
+      {
+        System.out.println();
+        System.out.println("Reactor melted down.");
+        System.out.println();
+        System.out.println("You won the game!");
+        System.exit(0);
+      }
     }
 
-    public String reactor()
+    return "Reactor melting down…";
+  }
+
+  public String oxygen()
+  {
+    int countdownOxygen = 21;
+
+    System.out.println();
+    System.out.println("Oxygen depleting…");
+    System.out.println();
+    pause(1000);
+
+    while(countdownOxygen > 0)
     {
-        int countdownReactor = 21;
-
-        System.out.println();
-        System.out.println("Reactor melting down…");
-        System.out.println();
-        pause(1000);
-        
-        while(countdownReactor > 0)
-        {
-            countdownReactor = countdownReactor - 1;
-            System.out.println(countdownReactor);
-            int reactorStabilized = (int)(Math.random() * 10) + 0;
+      countdownOxygen = countdownOxygen - 1;
+      System.out.println(countdownOxygen);
+      int oxygenRestored = (int)(Math.random() * 10) + 0;
           
-            if(reactorStabilized > 7)
-            { 
-                System.out.println();
-                System.out.println("Reactor stabilized.");
-                System.out.println();
-                reactorDown = false;
-                break; 
-            }
-          
-            pause(1000);
-        }
-        
-        if(countdownReactor == 0)
-        {
-            reactorDown = true;
-          
-            if(reactorDown = true)
-            {
-              System.out.println();
-              System.out.println("Reactor melted down.");
-              System.out.println();
-              System.out.println("You won the game!");
-              System.exit(0);
-            }
-        }
-
-        return "Reactor melting down…";
-    }
-
-    public String oxygen()
-    {
-        int countdownOxygen = 21;
-
+      if(oxygenRestored > 7)
+      {
         System.out.println();
-        System.out.println("Oxygen depleting…");
+        System.out.println("Oxygen restored.");
         System.out.println();
-        pause(1000);
-
-        while(countdownOxygen > 0)
-        {
-            countdownOxygen = countdownOxygen - 1;
-            System.out.println(countdownOxygen);
-            int oxygenRestored = (int)(Math.random() * 10) + 0;
-          
-            if(oxygenRestored > 7)
-            {
-              System.out.println();
-              System.out.println("Oxygen restored.");
-              System.out.println();
-              oxygenDepleted = false;
-              break; 
-            }
+        oxygenDepleted = false;
+        break; 
+      }
             
-            pause(1000);
-        }
+      pause(1000);
+    }
         
-        if(countdownOxygen == 0)
-        {
-            oxygenDepleted = true;
+    if(countdownOxygen == 0)
+    {
+      oxygenDepleted = true;
         
-            if(oxygenDepleted = true)
-            {
-              System.out.println();
-              System.out.println("Oxygen depleted.");
-              System.out.println();
-              System.out.println("You won the game!");
-              System.exit(0);
-            }
-        }
+      if(oxygenDepleted = true)
+      {
+        System.out.println();
+        System.out.println("Oxygen depleted.");
+        System.out.println();
+        System.out.println("You won the game!");
+        System.exit(0);
+      }
+    }
   
-        return "Oxygen depleting…";
-    }
+    return "Oxygen depleting…";
+  }
     
-    public String alibi()
-    {
-        alibi = true;
+  public String alibi()
+  {
+    alibi = true;
 
-        System.out.println();
-        System.out.println("Alibi created.");
-        System.out.println();
-        System.out.println("You won't be ejected next meeting.");
-        System.out.println();
-        return "Alibi created.";
-    }
+    System.out.println();
+    System.out.println("Alibi created.");
+    System.out.println();
+    System.out.println("You won't be ejected next meeting.");
+    System.out.println();
     
-    public String kill()
+    return "Alibi created.";
+  }
+    
+  public String kill()
+  {
+    numberOfPeople = numberOfPeople - 1;
+    peopleKilled = peopleKilled + 1;
+
+    int killWitness = (int)(Math.random() * 11) + 0;
+
+    System.out.println();
+    System.out.println("You killed someone.");
+    System.out.println();
+    System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
+
+    if(killWitness > 5)
     {
-        numberOfPeople = numberOfPeople - 1;
-        peopleKilled = peopleKilled + 1;
-
-        int killWitness = (int)(Math.random() * 11) + 0;
-
-        System.out.println();
-        System.out.println("You killed someone.");
-        System.out.println();
-        System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
-
-        if(killWitness > 5)
-        {
-            System.out.println();
-            System.out.println("No one saw you kill.");
-            System.out.println();
-        }
-        else if (killWitness < 6)
-        {
-            System.out.println();
-            System.out.println("Someone saw you kill.");
-            System.out.println();
-            Meeting meeting = new Meeting(numberOfPeople, peopleKilled, imposter, crewmate);
-        }
+      killSeen = false;
+      System.out.println();
+      System.out.println("No one saw you kill.");
+      System.out.println();
+    }
+    else if (killWitness < 6)
+    {
+      killSeen = true;
+      System.out.println();
+      System.out.println("Someone saw you kill.");
+      System.out.println();
+      Meeting meeting = new Meeting(name, numberOfPeople, peopleKilled, killSeen, imposter, crewmate);
+    }
         
-        return "You killed someone.";
-    }
+    return "You killed someone.";
+  }
 }
