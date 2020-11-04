@@ -77,6 +77,7 @@ public class Main
           }
           else
           {
+            System.out.println();
             System.out.println("AN ERROR HAS OCCURRED");
             System.out.println();
           }
@@ -92,6 +93,7 @@ public class Main
         }
         else
         {
+          System.out.println();
           System.out.println("AN ERROR HAS OCCURRED");
           System.out.println();
         }
@@ -139,6 +141,7 @@ public class Main
           }
           else
           {
+            System.out.println();
             System.out.println("AN ERROR HAS OCCURRED");              System.out.println();
           }
         }

@@ -79,11 +79,20 @@ public class Imposter
 
         if(killLights.equals("yes"))
         {
+          numberOfPeople = numberOfPeople - 1;
+          peopleKilled = peopleKilled + 1;
+          
           System.out.println();
           System.out.println("You killed someone.");
           System.out.println();
           System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
           System.out.println();
+          
+          if(numberOfPeople < 3)
+          {
+            System.out.println("VICTORY");
+            System.exit(0);
+          }
         }
         else if (killLights.equals("no"))
         {
@@ -91,12 +100,14 @@ public class Imposter
         }
         else
         {
+          System.out.println();
           System.out.println("AN ERROR OCCURRED");
           System.out.println();            
         }
       }
       else
       {
+        System.out.println();
         System.out.println("AN ERROR OCCURRED");
         System.out.println();
       }
@@ -215,7 +226,15 @@ public class Imposter
     System.out.println();
     System.out.println("You killed someone.");
     System.out.println();
+
     System.out.println("There are now "+numberOfPeople+" people in the game, including you.");
+    System.out.println();
+
+    if(numberOfPeople < 3)
+    {
+      System.out.println("VICTORY");
+      System.exit(0);
+    }
 
     if(killWitness > 5)
     {

@@ -59,20 +59,24 @@ public class Meeting
         if(defending == 1)
         {
           System.out.println();
-          System.out.println("You write: 'Proof'");
+          System.out.println("You write: \"Proof\"");
+          System.out.println();
         }
         else if (defending == 2)
         {
           System.out.println();
-          System.out.println("You write: 'Mate, I don't even know what your talking about'");
+          System.out.println("You write: \"Mate, I don't even know what your talking about\"");
+          System.out.println();
         }
         else if (defending == 3)
         {
           System.out.println();
-          System.out.println("You write: 'Bruh, I literally watched you kill them. Self report.'");
+          System.out.println("You write: \"Bruh, I literally watched you kill them. Self report.\"");
+          System.out.println();
         }
         else
         {
+          System.out.println();
           System.out.println("AN ERROR HAS OCCURED");
           System.out.println();
         }
@@ -80,7 +84,7 @@ public class Meeting
       else if (defend.equals("no"))
       {
         System.out.println();
-        System.out.println("Yeah, I messed up, gg.");
+        System.out.println("You write: \"Yeah, I messed up, gg.\"");
         System.out.println();
         System.out.println(name + " was The Imposter.");
         System.out.println("0 Imposters left");
@@ -90,6 +94,7 @@ public class Meeting
       }
       else
       {
+        System.out.println();
         System.out.println("AN ERROR HAS OCCURED");
         System.out.println();
       }
@@ -113,21 +118,24 @@ public class Meeting
         if(defendingI == 1)
         {
           System.out.println();
-          System.out.println("You write: 'How'");
+          System.out.println("You write: \"How\"");
           System.out.println();
         }
         else if (defendingI == 2)
         {
           System.out.println();
-          System.out.println("You write: 'Wtf are you talking about, I was in weapons doing the downoad task'");
+          System.out.println("You write: \"Wtf are you talking about, I was in weapons doing the downoad task\"");
+          System.out.println();
         }
         else if (defendingI == 3)
         {
           System.out.println();
-          System.out.println("You write: 'I was literally in reactor doing the pattern task thing'");
+          System.out.println("You write: \"I was literally in reactor doing the pattern task thing\"");
+          System.out.println();
         }
         else
         {
+          System.out.println();
           System.out.println("AN ERROR HAS OCCURED");
           System.out.println();
         }
@@ -140,6 +148,7 @@ public class Meeting
       }
       else
       {
+        System.out.println();
         System.out.println("AN ERROR HAS OCCURED");
         System.out.println();
       }
@@ -165,12 +174,14 @@ public class Meeting
       }
       else
       {
+        System.out.println();
         System.out.println("AN ERROR HAS OCCURED");
         System.out.println();
       }
     }
     else
     {
+      System.out.println();
       System.out.println("AN ERROR HAS OCCURED");
       System.out.println();
     }
