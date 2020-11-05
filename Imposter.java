@@ -13,8 +13,9 @@ public class Imposter
   private boolean reactorDown;
   private boolean oxygenDepleted;
   private boolean alibi = false;
-  private int peopleKilled;
-  private boolean killSeen;
+  private int peopleKilled = 0;
+  private boolean killHappened = false;
+  private boolean killSeen = false;
 
   public static void pause(int ms) 
   {
@@ -112,6 +113,8 @@ public class Imposter
         System.out.println();
       }
 
+    System.out.println(bodyFound());
+
     return "Lights going out…";
   }
 
@@ -156,6 +159,8 @@ public class Imposter
       }
     }
 
+    System.out.println(bodyFound());
+
     return "Reactor melting down…";
   }
 
@@ -199,7 +204,9 @@ public class Imposter
         System.exit(0);
       }
     }
-  
+
+    System.out.println(bodyFound());
+
     return "Oxygen depleting…";
   }
     
@@ -212,6 +219,7 @@ public class Imposter
     System.out.println();
     System.out.println("You won't be ejected next meeting.");
     System.out.println();
+    System.out.println(bodyFound());
     
     return "Alibi created.";
   }
@@ -220,6 +228,7 @@ public class Imposter
   {
     numberOfPeople = numberOfPeople - 1;
     peopleKilled = peopleKilled + 1;
+    killHappened = true;
 
     int killWitness = (int)(Math.random() * 11) + 0;
 
@@ -242,6 +251,8 @@ public class Imposter
       System.out.println();
       System.out.println("No one saw you kill.");
       System.out.println();
+
+      System.out.println(bodyFound());
     }
     else if (killWitness < 6)
     {
@@ -253,5 +264,22 @@ public class Imposter
     }
         
     return "You killed someone.";
+  }
+
+  public String bodyFound()
+  {
+    if(killHappened == true)
+    {
+      int bodyFound = (int)(Math.random() * 11) + 0;
+
+      if(bodyFound > 5)
+      {
+        System.out.println("Dead Body Reported");
+        System.out.println();
+        Meeting meeting = new Meeting(name, numberOfPeople, peopleKilled, killSeen,imposter, crewmate);
+      }
+    }
+
+    return "";
   }
 }
